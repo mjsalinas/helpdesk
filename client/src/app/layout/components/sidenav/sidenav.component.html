@@ -1,0 +1,40 @@
+<div class="example-container" [class.example-is-mobile]="mobileQuery.matches">
+    <mat-toolbar class="toolbar example-toolbar">
+        <button mat-icon-button class="nav-button" (click)="snav.toggle()">
+            <mat-icon>menu</mat-icon>
+        </button>
+        <h1 class="example-app-name">Help Desk GSC</h1>
+        <span class="example-spacer"></span>
+
+        <button mat-icon-button [matMenuTriggerFor]="userMenu" class="decora user-button">
+            <mat-icon>account_circle</mat-icon>
+            <span>&nbsp; UserName &nbsp;</span>
+            <mat-icon>keyboard_arrow_down</mat-icon>
+        </button>
+        <mat-menu #userMenu="matMenu" [overlapTrigger]="false">
+            <a mat-menu-item routerLink="profile">
+                <mat-icon>account_circle</mat-icon>
+                <span>Mi Perfil</span>
+            </a>
+            <button mat-menu-item (click)="auth.logout()" class="">
+                <mat-icon>exit_to_app</mat-icon>
+                <span>Cerrar Sesión</span>
+            </button>
+        </mat-menu>
+
+    </mat-toolbar>
+
+    <mat-sidenav-container class="example-sidenav-container" [style.marginTop.px]="mobileQuery.matches ? 56 : 0">
+        <mat-sidenav #snav [(opened)]="opened" [mode]="mobileQuery.matches ? 'over' : 'side'" [fixedInViewport]="mobileQuery.matches"
+            fixedTopGap="56" class="icon-list">
+            <mat-nav-list>
+                <a class="decora" mat-list-item *ngFor="let nav of fillerNav" [routerLink]="nav.route">
+                    <mat-icon> {{nav.icon}} &nbsp; </mat-icon> &nbsp; {{nav.title}} </a>
+            </mat-nav-list>
+        </mat-sidenav>
+
+        <mat-sidenav-content>
+            <router-outlet></router-outlet>
+        </mat-sidenav-content>
+    </mat-sidenav-container>
+</div>
