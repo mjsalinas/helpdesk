@@ -17,7 +17,6 @@ import { RouterModule } from '@angular/router';
 import { MatCardModule } from '@angular/material/card';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { ChatComponent } from './components/chat/chat.component';
 
 
 
@@ -25,7 +24,7 @@ import { ChatComponent } from './components/chat/chat.component';
   declarations: [
     LoginLayoutComponent, 
     ContentLayoutComponent, 
-    SidenavComponent, ChatComponent,
+    SidenavComponent,
   ],
   imports: [
     RouterModule,
